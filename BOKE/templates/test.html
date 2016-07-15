@@ -1,0 +1,112 @@
+<div class="topnews">
+      <h2>最新文章</h2>
+      {% for article in article_list %}
+      <div class="blogs">
+        <ul>
+          <h3><a href="{% url 'article' %}?id={{ article.id }}">{{ article.title }}</a></h3>
+          <p>{{ article.desc }}</p>
+          <p class="autor"><span class="lm f_l">
+              {% for tag in article.tag.all %}
+              <a href="/">{{ tag.name }}</a>&nbsp;</span>
+              {% endfor %}
+
+              <span class="dtime f_l">{{ article.date_publish | date:'Y-m-d' }}</span>
+              <span class="viewnum f_r">浏览（<a href="/">{{ article.click_count }}</a>）</span>
+              <span class="pingl f_r">评论（<a href="/">{{ article.comment_set.all.count }}</a>）</span></p>
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+.topnews { margin: 20px 0; }
+.topnews h2 { font-size: 16px; font-weight: bold; line-height: 36px; color: #333; border-bottom: #db6d4c 4px solid; }
+.topnews h2 b { }
+.topnews h2 span { float: right; font-size: 12px; font-weight: normal; }
+.topnews h2 span a { display: inline-block; padding: 0 5px; }
+.topnews h2 span a:hover { color: #000 }
+.blogs { padding: 30px 0; position: relative; border-bottom: #CCC 1px solid; overflow: hidden }
+.blogs h3 { font-size: 16px; font-weight: bold; transition: all .5s; margin-bottom: 10px }
+.blogs h3 a { color: #474645; }
+.blogs h3 a:hover { color: #066; text-decoration: underline }
+.blogs ul { float: right; line-height: 22px; width: 100%; color: #756F71;}
+.autor { overflow: hidden; clear: both; margin: 10px 0; display: inline-block; color: #838383; width: 100%;  }
+.autor span { margin: 0 10px 0 0; padding-left: 20px }
+.autor span a { color: #759b08; }
+.autor span a:hover { text-decoration: underline }
+.lm { background: url(../images/newsbg01.png) no-repeat left center }
+.dtime { background: url(../images/newsbg02.png) no-repeat left center }
+.viewnum { background: url(../images/newsbg04.png) no-repeat left center }
+.pingl { background: url(../images/newsbg03.png) no-repeat left center }
+.tit01 h3 { line-height: 40px; color: #38485A; font-size: 18px; border-bottom: 1px solid #E6E6E6; height: 40px }
+
+
+ {% for article in article_list %}
+        <div class="blog-box row">
+            <div class="head-img col-md-3">
+                <img  src="/static/images/a3.jpg">
+            </div>
+            <div class="blog-summary-box col-md-9" >
+                 <h2> test titile</h2>
+                <div class="blog-summary-btn">
+                29date
+                </div>
+                <div class="blog-summary">
+                    sfsdf
+                </div>
+            </div>
+
+        </div>
+
+      {% endfor %}
+
+
+<div class="topnews">
+      <h2>{{ category.name }}</h2>
+      {% for article in article_list %}
+      <div class="blogs">
+        <ul>
+          <h3><a href="/">{{ article.title }}</a></h3>
+          <p>{{ article.desc }}</p>
+          <p class="autor"><span class="lm f_l">
+              {% for tag in article.tag.all %}
+                  <a href="/">{{ tag.name }}</a>&nbsp;</span>
+              {% endfor %}
+              <span class="dtime f_l">{{ article.date_publish | date:'Y-m-d' }}</span>
+              <span class="viewnum f_r">浏览（<a href="/">{{ article.click_count }}</a>）</span>
+              <span class="pingl f_r">评论（<a href="/">{{ article.comment_set.all.count }}</a>）</span></p>
+        </ul>
+      </div>
+      {% endfor %}
+
+
+
+
+
+<div class="topnews">
+      <h2>{{ request.GET.year }}/{{ request.GET.month }}文章归档</h2>
+      {% for article in article_list %}
+      <div class="blogs">
+        <ul>
+          <h3><a href="/">{{ article.title }}</a></h3>
+          <p>{{ article.desc }}</p>
+          <p class="autor"><span class="lm f_l">
+              {% for tag in article.tag.all %}
+                  <a href="/">{{ tag.name }}</a>&nbsp;</span>{% endfor %}
+              <span class="dtime f_l">{{ article.date_publish | date:'Y-m-d' }}</span>
+              <span class="viewnum f_r">浏览（<a href="/">{{ article.click_count }}</a>）</span>
+              <span class="pingl f_r">评论（<a href="/">{{ article.comment_set.all.count }}</a>）</span></p>
+        </ul>
+      </div>
+      {% endfor %}
+    </div>

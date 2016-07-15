@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block left_content %}
+    {% include 'ad.html' %}
+    <h2>{{ request.GET.year }}/{{ request.GET.month }}文章归档</h2>
+    {% for article in article_list %}
+        <div class="blog-box row">
+            <div class="head-img col-md-5">
+                <img  src="{{ MEDIA_URL }}{{ article.article_pic }}">
+            </div>
+            <div class="blog-summary-box col-md-7" >
+                 <h3><a href="{% url 'article' %}?id={{ article.id }}">{{ article.title }}</a></h3>
+                <div class="blog-summary-btn">
+                    <a>{{ article.user }}</a>
+                    <span>{{ article.date_publish | date:'Y-m-d' }}</span>
+                    <span><i class="fa fa-star"></i><a href="/">{{ article.click_count }}</a></span>
+                    <span><i class="fa fa-comment-o"></i><a href="/">{{ article.comment_set.all.count }}</a></span>
+                    <span><i class="fa fa-wechat"></i></span>
+                </div>
+                <div class="blog-summary">
+                   {{ article.desc }}
+                </div>
+            </div>
+
+        </div>
+
+      {% endfor %}
+
+    {% include 'pagination.html' %}
+{% endblock %}
